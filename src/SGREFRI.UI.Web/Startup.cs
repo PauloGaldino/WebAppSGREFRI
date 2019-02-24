@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using SGREFRI.UI.Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SGREFRI.Infrastructure.Data;
 
 namespace SGREFRI.UI.Web
 {
@@ -37,6 +38,11 @@ namespace SGREFRI.UI.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ClienteContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
